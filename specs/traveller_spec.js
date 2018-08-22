@@ -49,7 +49,7 @@ describe('Traveller', function() {
     assert.deepStrictEqual(actual, traveller.getJourneyEndLocations());
   });
 
-  xit('should be able to get a list of the modes of transport', function() {
+  it('should be able to get a list of the modes of transport', function() {
     const actual = [ 'train', 'train', 'aeroplane', 'car', 'ferry' ];
     assert.deepStrictEqual(actual, traveller.getModesOfTransport());
   });
