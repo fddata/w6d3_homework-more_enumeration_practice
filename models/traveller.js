@@ -9,7 +9,9 @@ Traveller.prototype.getJourneyStartLocations = function() {
 };
 
 Traveller.prototype.getJourneyEndLocations = function () {
-
+ return this.journeys.map((journey) => {
+   return journey.endLocation;
+ });
 };
 
 Traveller.prototype.getModesOfTransport = function () {
