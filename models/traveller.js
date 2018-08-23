@@ -34,8 +34,9 @@ Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
   return this.journeys.reduce((total, journey) => {
-    return total += journey.distance;
+    return total + journey.distance;
   },0);
+  //^---- note to set the starting value here, otherwise it will default to the first object in the iterable.
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
@@ -43,13 +44,14 @@ Traveller.prototype.getUniqueModesOfTransport = function () {
 
   // More than one way to do this. We can create an array from a set.
  //Sets contain unique values only. ... is the 'spread' operator:
-  return  [...new Set(this.getModesOfTransport())];
+  // return  [...new Set(this.getModesOfTransport())];
 
 //Or we can find the first (and only the first) index of each value,
 //then filter by these unique indexes:
-  // return this.getModesOfTransport().filter((value, index, array) => {
-  //   return array.indexOf(value) === index;
-  // });
+//i.e. does the index we are on match the index of the first occurance in the array?
+  return this.getModesOfTransport().filter((value, index, myArray) => {
+    return myArray.indexOf(value) === index;
+  });
 };
 
 
